@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9"
+    android:padding="20dp"
+    tools:context=".EligibilityCheckerActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check Your Qualification"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:textColor="#388E3C"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your SPM/O-Level grades (A, B, C, D, E) for the subjects below to find your course fit."
+            android:layout_marginBottom="30dp"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:gravity="center"/>
+
+        <!-- Input Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Maths Input -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. Mathematics Grade:"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:layout_marginTop="8dp"/>
+                <EditText
+                    android:id="@+id/edit_maths_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter grade (e.g., A)"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/edit_text_border"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <!-- Additional Maths Input -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2. Additional Mathematics Grade:"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:layout_marginTop="16dp"/>
+                <EditText
+                    android:id="@+id/edit_additional_maths_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter grade (e.g., B)"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/edit_text_border"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <!-- English Input -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. English Language Grade:"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:layout_marginTop="16dp"/>
+                <EditText
+                    android:id="@+id/edit_english_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter grade (e.g., C)"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/edit_text_border"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <!-- Science/Technical Input -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4. Science / Technical Subject Grade:"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:layout_marginTop="16dp"/>
+                <EditText
+                    android:id="@+id/edit_science_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter grade (e.g., B)"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/edit_text_border"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <!-- Other Subjects -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5. Other Subject 1 Grade:"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:layout_marginTop="16dp"/>
+                <EditText
+                    android:id="@+id/edit_other1_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter grade (e.g., A)"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/edit_text_border"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6. Other Subject 2 Grade:"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:layout_marginTop="16dp"/>
+                <EditText
+                    android:id="@+id/edit_other2_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter grade (e.g., B)"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/edit_text_border"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7. Other Subject 3 Grade:"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:layout_marginTop="16dp"/>
+                <EditText
+                    android:id="@+id/edit_other3_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter grade (e.g., C)"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/edit_text_border"
+                    android:paddingStart="12dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Check Button -->
+        <Button
+            android:id="@+id/button_check_eligibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check Eligibility &amp; Apply"
+            android:layout_marginTop="16dp"
+            android:padding="15dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="#388E3C"
+            android:textColor="@android:color/white"
+            style="@style/Widget.AppCompat.Button.Colored"/>
+
+        <!-- Results Text Area -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Qualification Status:"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#333"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/text_eligibility_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@drawable/result_box_background"
+            android:textSize="18sp"
+            android:gravity="start"
+            android:minHeight="100dp"
+            android:text="Enter your grades above and press 'Check Eligibility' to see your results here."
+            android:textColor="#555555"/>
+    </LinearLayout>
+</ScrollView>
