@@ -1,7 +1,9 @@
 package com.swe3.miniproject1;
 
+import android.content.Intent; // Import Intent for navigation
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button; // Import Button
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,15 +11,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
+// ... (imports remain the same) ...
+
 public class CourseDetailsActivity extends AppCompatActivity {
 
     private Course course;
-    private ImageView headerImage; // Corresponds to @+id/course_header_image
+    private ImageView headerImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Assuming your layout file is named activity_course_details
         setContentView(R.layout.activity_course_detail);
 
         // 1. Setup Toolbar/ActionBar
@@ -32,60 +35,48 @@ public class CourseDetailsActivity extends AppCompatActivity {
 
         // 3. Retrieve the Course object from the Intent
         if (getIntent().hasExtra("course_object")) {
-            // The Course class implements Serializable, so this is correct
             course = (Course) getIntent().getSerializableExtra("course_object");
 
             if (course != null) {
-                // Set the image dynamically
+                // Set the image dynamically using the ID stored in the Course object
                 setHeaderImage(course);
                 // Populate the rest of the details
                 populateDetails(course);
             }
         }
+
+        // 4. Setup the new button listener
+        setupEligibilityButton(); // This calls the revised method below
     }
 
     /**
-     * Maps the Course data to a specific drawable resource ID and sets it on the header ImageView.
+     * Sets up the click listener for the "Check Eligibility" button
+     * to navigate to EligibilityCheckerActivity.
      */
+    private void setupEligibilityButton() {
+        // --- UPDATED ID HERE ---
+        Button checkEligibilityButton = findViewById(R.id.btn_check_eligibility);
+
+        if (checkEligibilityButton != null) {
+            checkEligibilityButton.setOnClickListener(v -> {
+                // Intent to start the EligibilityCheckerActivity
+                Intent intent = new Intent(CourseDetailsActivity.this, EligibilityCheckerActivity.class);
+                startActivity(intent);
+            });
+        }
+    }
+
+    // ... (rest of the CourseDetailsActivity methods like setHeaderImage and populateDetails) ...
+
     private void setHeaderImage(Course course) {
-        int imageResId = getCourseIconResource(course);
+        // Fetch the image ID directly from the Course object
+        int imageResId = course.getImageResId();
 
         // Set the image resource
         headerImage.setImageResource(imageResId);
 
-        // Remove any tint to ensure the image shows its true colors
+        // Remove any tint
         headerImage.setColorFilter(null);
-    }
-
-    /**
-     * Helper method to determine the correct drawable resource ID based on the course data.
-     */
-    private int getCourseIconResource(Course course) {
-        String programType = course.getProgramType();
-        String department = course.getDepartment();
-
-        if (programType.equalsIgnoreCase("GAPP")) {
-            return R.drawable.gapp_image;
-        } else if (programType.equalsIgnoreCase("GUFP")) {
-            return R.drawable.gufp_image;
-        } else if (programType.equalsIgnoreCase("Diploma")) {
-
-            // --- DIPLOMA SUB-DIVISION LOGIC ---
-            if (department != null) {
-                if (department.equalsIgnoreCase("Electrical Engineering")) {
-                    return R.drawable.eed_image;
-                } else if (department.equalsIgnoreCase("Mechanical Engineering")) {
-                    return R.drawable.med_image;
-                } else if (department.equalsIgnoreCase("Computer & Information")) {
-                    return R.drawable.cid_image;
-                }
-            }
-            // Fallback for Diploma courses without a recognized department
-            return R.drawable.placeholder_course;
-        }
-
-        // Default fallback image if type is not recognized
-        return R.drawable.placeholder_course;
     }
 
     /**
@@ -126,7 +117,6 @@ public class CourseDetailsActivity extends AppCompatActivity {
 
         // Entry Requirements Section
         headerRequirements.setText("Entry Requirements");
-        // 🚀 FINAL FIX APPLIED HERE: Using the correct method getRequirements()
         contentRequirements.setText(course.getRequirements());
 
         // Career Opportunities Section
